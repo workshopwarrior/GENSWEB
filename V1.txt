@@ -1,0 +1,233 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* FIGMA AUTO LAYOUT MAPPING:
+- Direction: flex-direction
+- Gap: gap
+- Padding: padding
+- Width Fill: width: 100%
+- Height Hug: height: fit-content
+- Justify Content Auto: justify-content: space-between
+*/
+
+/* HOMEPAGE AUTO LAYOUT */
+.homepage
+{
+    /* Figma: Vertical flow, padding 64px, gap 16px, width fill, height hug */
+    display: flex;
+    flex-direction: column;     /* Vertical flow */
+    padding: 0 64px;            /* Horizontal padding */
+    gap: 8px;
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+}
+
+/* NAVBAR AUTO LAYOUT */
+.navbar 
+{
+    /* Figma: Horizontal flow, width fill, height hug, gap auto */
+    display: flex;
+    flex-direction: row;   /* Horizontal flow */ 
+    width: 100%;            /* Width fill */
+    height: fit-content;    /* Height hug */
+    justify-content: space-between; /* Gap "auto" = space-between */
+    align-items: center;
+}
+
+/* LOGO AUTO LAYOUT */
+.logo 
+{
+    /* Figma: Vertical flow, vertical padding 8px, width hug, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    padding: 8px 0; /*vertical padding */
+    width: fit-content;
+    height: fit-content;
+}
+
+.logo img 
+{
+    /* Figma: Width 78px, Height 56px */
+    width: 78px;
+    height: 56px;
+    background-color: #2563eb; /* Placeholder for logo */
+    /*border-radius: 8px;*/
+}
+
+/* LINKS AUTO LAYOUT */
+.links
+{
+    /* Figma: Horizontal flow, gap 40px, vertical padding 24px, width hug, height hug */
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding-top: 24px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.links a 
+{
+    /* Figma: Width hug, height hug, font size 16px, line height 24px, Inter regular */
+    width: fit-content;
+    height: fit-content;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.links a:hover 
+{
+    color: #D4AF37;
+}
+
+/* HERO SECTION AUTO LAYOUT */
+.hero-section 
+{
+    /* Figma: Vertical flow, vertical padding 24px, gap 32px, width fill, height hug */
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    gap: 24px;
+    width: 100%;
+    height: fit-content;
+}
+
+.title 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 80px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 96px;
+    color: #1f2937;
+}
+
+.subtitle 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 24px;
+    font-family: 'inter', serif;
+    font-weight: 400;
+    line-height: 32px;
+    color: #6b7280;
+}
+
+/* CTA AUTO LAYOUT */
+.cta 
+{
+    /* Figma: Width hug, height hug, gap 16px, vertical padding 24px */
+    display: flex;
+    flex-direction: row; /* Default horizontal for buttons */
+    width: fit-content; /* Width hug */
+    height: fit-content;    /* Height hug */
+    gap: 16px;
+    padding: 16px 0;    /*vertical padding */
+}
+
+.button 
+{
+    /* Figma: Width hug, height hug, horizontal padding 32px, vertical padding 16px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-primary 
+{
+    background-color: #2563eb;
+    color: white;
+}
+
+.button-primary:hover 
+{
+    background-color: #D4AF37;
+}
+
+.button-secondary 
+{
+    background-color: transparent;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+}
+
+.button-secondary:hover 
+{
+    background-color: #D4AF37;
+    color: white;
+}
+
+/* Section spacing for scroll website */
+.section 
+{
+    margin-bottom: 128px; /* 128px gap between sections */
+}
+
+.section:last-child 
+{
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) 
+{
+    .homepage 
+    {
+        padding: 32px 16px;
+    }
+            
+    .title, .subtitle 
+    {
+        font-size: 48px;
+        line-height: 56px;
+    }
+            
+    .navbar 
+    {
+        flex-direction: column;
+        gap: 16px;
+    }
+            
+    .links 
+    {
+        gap: 24px;
+        padding: 16px 0;
+    }
+            
+    .cta 
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+}

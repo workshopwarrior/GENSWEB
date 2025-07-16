@@ -1,0 +1,606 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: 'Inter', sans-serif;
+    background-color: #003366;
+    color: #FFFFFF;
+}
+
+/* FIGMA AUTO LAYOUT MAPPING:
+- Direction: flex-direction
+- Gap: gap
+- Padding: padding
+- Width Fill: width: 100%
+- Height Hug: height: fit-content
+- Justify Content Auto: justify-content: space-between
+*/
+
+/* HOMEPAGE AUTO LAYOUT */
+.homepage
+{
+    /* Figma: Vertical flow, padding 64px, gap 16px, width fill, height hug */
+    display: flex;
+    flex-direction: column;     /* Vertical flow */
+    padding: 0 64px;            /* Horizontal padding */
+    gap: 8px;
+    width: 100%;
+    height: fit-content; /* Height hug */
+    /*min-height: 100vh;*/
+}
+
+/* NAVBAR AUTO LAYOUT */
+.navbar 
+{
+    /* Figma: Horizontal flow, width fill, height hug, gap auto */
+    display: flex;
+    flex-direction: row;   /* Horizontal flow */ 
+    width: 100%;            /* Width fill */
+    height: fit-content;    /* Height hug */
+    justify-content: space-between; /* Gap "auto" = space-between */
+    align-items: center;
+}
+
+/* LOGO AUTO LAYOUT */
+.logo 
+{
+    /* Figma: Vertical flow, vertical padding 8px, width hug, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    padding: 8px 0; /*vertical padding */
+    width: fit-content;
+    height: fit-content;
+}
+
+.logo img 
+{
+    /* Figma: Width 78px, Height 56px */
+    width: 78px;
+    height: 56px;
+    background-color: #2563eb; /* Placeholder for logo */
+    /*border-radius: 8px;*/
+}
+
+/* LINKS AUTO LAYOUT */
+.links
+{
+    /* Figma: Horizontal flow, gap 40px, vertical padding 24px, width hug, height hug */
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding-top: 24px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.links a {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: color 0.3s ease;
+}
+
+/* Add underline effect using ::after */
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* adjust spacing under text */
+    width: 0%;
+    height: 2px;
+    background-color: #D4AF37;
+    transition: width 0.3s ease;
+    border-radius: 8px; /* Rounded underline */
+}
+
+/* Hover effects */
+.links a:hover 
+{
+    color: #D4AF37; /* Changes text color */
+}
+
+/* On hover, expand the underline smoothly */
+.links a:hover::after 
+{
+    width: 100%;
+}
+
+
+/* HERO SECTION AUTO LAYOUT */
+.hero-section 
+{
+    /* Figma: Vertical flow, vertical padding 24px, gap 32px, width fill, height hug */
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    gap: 24px;
+    width: 100%;
+    height: fit-content;
+}
+
+.herotitle 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 80px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 96px;
+    color: #FFFFFF;
+}
+
+.herosubtitle 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 24px;
+    font-family: 'inter', serif;
+    font-weight: 400;
+    line-height: 32px;
+    color: #FFFFFF;
+}
+
+/* CTA AUTO LAYOUT */
+.cta1 
+{
+    /* Figma: Width hug, height hug, gap 16px, vertical padding 24px */
+    display: flex;
+    flex-direction: row; /* Default horizontal for buttons */
+    width: fit-content; /* Width hug */
+    height: fit-content;    /* Height hug */
+    gap: 16px;
+    padding: 20px 0;    /*vertical padding */
+}
+
+.button 
+{
+    /* Figma: Width hug, height hug, horizontal padding 32px, vertical padding 16px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-primary 
+{
+    background-color: #D4AF37;
+    color: #003366;
+    border: 1px solid #D4AF37;
+    /*#2563eb*/
+}
+
+.button-primary:hover 
+{
+    color: white;
+    background-color: #003366; /* Darker shade for hover effect */
+}
+
+.button-secondary 
+{
+    background-color: transparent;
+    color: #D4AF37;
+    border: 1px solid #D4AF37;
+}
+
+.button-secondary:hover 
+{
+    background-color: #D4AF37;
+    color: white;
+}
+
+/*ABOUT PAGE SECTION AUTO LAYOUT */
+.About
+{
+    /* Figma: Vertical flow, padding 64px, gap 16px, width fill, height hug */
+    display: flex;
+    flex-direction: row;     /* horizontal flow */
+    padding: 0 32px;            /* Horizontal padding */
+    gap: 64px;
+    width: 100%;
+    height: fit-content; /* Height hug */
+    /*min-height: 100vh;*/
+}
+.ellipse-container
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: fit-content;      /* Width hug */
+    height: fit-content;     /* Height hug */
+    align-items: center;     /* Center content horizontally */
+    padding:24px 0; /* Vertical padding */ 
+}
+.ellipse 
+{
+  width: 400px;
+  height: 400px;
+  background-color: #D4AF37; /* Example color */
+  border-radius: 50%; /* Makes it a circle */
+}
+.right-container
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: flex-start; /* Align content to the left */
+    gap: 16px;
+    min-width: 360px; /* Minimum width for smaller screens */
+}
+.content 
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: flex-start; /* Align content to the left */
+    gap: 32px;
+    padding: 24px 0; /* Vertical padding */
+}
+.title 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 64px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 104px;
+    color: #FFFFFF;
+}
+.subtitle 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 16px;
+    font-family: 'Inter', serif;
+    font-weight: 400;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.cta2 
+{
+    /* Figma: Width hug, height hug, gap 16px, vertical padding 24px */
+    display: flex;
+    flex-direction: row; /* Default horizontal for buttons */
+    width: fit-content; /* Width hug */
+    height: fit-content;    /* Height hug */
+    gap: 16px;
+    padding: 24px 0;    /*vertical padding */
+}
+
+/*ABOUT PAGE 2 SECTION AUTO LAYOUT */
+.Aboutpage2
+{
+    /* Figma: Vertical flow, padding 64px, gap 16px, width fill, height hug */
+    display: flex;
+    flex-direction: row;     /* horizontal flow */
+    padding: 128px 64px;
+    gap: 64px;
+    width: 100%;
+    min-width: 256px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 24px #FFFFFF;  /* solid black shadow, no transparency */
+    height: fit-content; /* Height hug */
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    /*min-height: 100vh;*/
+}
+
+.AboutTILE
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: center;     /* Center content horizontally */
+    padding: 24px 16px; /* Vertical padding */ 
+    min-height: 392px;
+    max-height: 392px;
+    min-width: 256px;
+    border-radius: 8px;
+    gap:32px;
+    border: 1px solid #003366;
+}
+.Tiletitle 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 32px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 48px;
+    text-align: center;
+    color: #003366;
+}
+.Tilelist
+{
+    /* Figma: Width fill, height hug, font size 16px, Inter regular, line height 24px */
+    width: 100%;
+    height: fit-content;
+    font-size: 16px;
+    font-family: 'Inter', serif;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    align-items: center; 
+    color: #003366;
+    list-style-type: disc; /* Remove default list styling */
+    /*list-style-position: inside; /* bullets inside padding */
+    padding-left: 16px;
+}
+
+/*SERVICES SECTION AUTO LAYOUT */
+.Services
+{
+    /* Figma: Vertical flow, padding 64px, gap 16px, width fill, height hug */
+    display: flex;
+    flex-direction: column;     /* vertical flow */
+    padding: 0 32px;            /* Horizontal padding */
+    gap: 16px;
+    width: 100%;
+    height: fit-content; /* Height hug */
+    /*min-height: 100vh;*/
+}
+.Servicescontainer
+{
+    display: flex;
+    flex-direction:column; /* Vertical flow */
+    padding:24px 0; /* Vertical padding */
+    gap: 32px; /* Gap between service tiles */
+    width: 100%; /* Width fill */
+    height: fit-content; /* Height hug */
+
+}
+.ServiceTile
+{
+    /* Figma: Vertical flow, width fill, height hug, gap 16px, padding 0px */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    gap: 16px;
+    padding: 0px;
+}
+.Frame
+{
+    display: flex;
+    flex-direction: row; /* Horizontal flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    gap: 10px;
+    padding: 0px;
+    border-bottom: 1px solid #FFFFFF; /* Thickness style color */
+}
+.ServiceName
+{
+    /* Figma: Width fill, height hug, font size 32px, Playfair Display regular, line height 48px */
+    width: 100%;
+    height: fit-content;
+    font-size: 48px;
+    line-height: 80px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    text-align: left;
+    color: #FFFFFF;   
+}
+
+.Contact
+{
+    /* Figma: Vertical flow, padding 64px, gap 16px, width fill, height hug */
+    display: flex;
+    flex-direction: row;     /* horizontal flow */
+    padding: 64px 32px;            /* Horizontal padding */
+    gap: 64px;
+    width: 100%;
+    height: fit-content; /* Height hug */
+    background-color: #FFFFFF;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0px 0px 24px #FFFFFF;  /* solid black shadow, no transparency */
+    /*min-height: 100vh;*/
+}
+.LEFTContent
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: flex-start; /* Align content to the left */
+    gap: 32px;
+    padding: 24px 0; /* Vertical padding */
+}
+.C_T
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 64px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 104px;
+    color: #003366;
+}
+.C_S
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 16px;
+    font-family: 'Inter', serif;
+    font-weight: 400;
+    line-height: 24px;
+    color: #003366;
+}
+.RIGHTContent
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: left; /* Align content to the left */
+    gap: 16px;
+}
+.ContactForm
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: left; /* Align content to the left */
+    gap: 8px;
+    padding: 24px 0; /* Vertical padding */
+}
+.Names
+{
+    display: flex;
+    flex-direction: row; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: left; /* Align content to the left */
+    gap: 32px;
+}
+.LeftSide
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: left; /* Align content to the left */
+}
+.RightSide
+{
+    /* Figma: Vertical flow, width fill, height hug */
+    display: flex;
+    flex-direction: column; /* Vertical flow */
+    width: 100%;      /* Width fill */
+    height: fit-content;     /* Height hug */
+    align-items: left; /* Align content to the left */
+}
+.Contact-title 
+{
+    /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
+    width: 100%;
+    height: fit-content;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    color: #003366;
+}
+.ContactInput
+{
+    width: 100%;
+    height: fit-content;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    border: none;              /* Remove all borders */
+    border-bottom: 1px solid #003366; /* Bottom border only */
+    outline: none;             /* Remove default focus outline (optional) */
+    background: none;   
+}
+/* Section spacing for scroll website */
+.section 
+{
+    margin-bottom: 128px; /* 128px gap between sections */
+}
+.section:last-child 
+{
+    margin-bottom: 0;
+}
+
+/* HOMEPAGE ANIMATIONS */
+/* NAVBAR ANIMATION */
+.navbar 
+{
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: navSlideDown 0.8s ease-out forwards;
+}
+
+@keyframes navSlideDown 
+{
+  to 
+  {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* HERO SECTION ANIMATION */
+.herotitle 
+{
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.herosubtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.cta1 
+{
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 1.1s;
+}
+
+@keyframes fadeUp 
+{
+  to 
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ABOUT PAGE ANIMATION */
+/* ABOUT PAGE 2 ANIMATION */
+/* Responsive adjustments */
+@media (max-width: 1152px) 
+{
+    .Aboutpage2
+    {
+        flex-wrap: wrap;
+    }
+
+}
