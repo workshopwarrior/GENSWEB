@@ -8,10 +8,22 @@
 body
 {
     font-family: 'Inter', sans-serif;
-    background-color: #003366;
     color: #FFFFFF;
+    background: linear-gradient(-45deg, #003366, #004080);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+}
+@keyframes gradientShift 
+{
+    0% { background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% { background-position: 0% 50%;}
 }
 
+html 
+{
+  scroll-behavior: smooth;
+} 
 /* FIGMA AUTO LAYOUT MAPPING:
 - Direction: flex-direction
 - Gap: gap
@@ -31,7 +43,7 @@ body
     gap: 8px;
     width: 100%;
     height: fit-content; /* Height hug */
-    /*min-height: 100vh;*/
+    min-height: 100vh; /* Make sure it's visible */
 }
 
 /* NAVBAR AUTO LAYOUT */
@@ -57,12 +69,12 @@ body
     height: fit-content;
 }
 
-.logo img 
+.logo-img 
 {
     /* Figma: Width 78px, Height 56px */
     width: 78px;
     height: 56px;
-    background-color: #2563eb; /* Placeholder for logo */
+    object-fit: cover; /* Ensures the image covers the logo area */
     /*border-radius: 8px;*/
 }
 
@@ -73,7 +85,7 @@ body
     display: flex;
     flex-direction: row;
     gap: 40px;
-    padding-top: 24px;
+    padding:24px 0;
     width: fit-content;
     height: fit-content;
 }
@@ -221,7 +233,8 @@ body
     gap: 64px;
     width: 100%;
     height: fit-content; /* Height hug */
-    /*min-height: 100vh;*/
+    min-height: 100vh;/*Make sure it's visible*/
+    overflow: hidden;
 }
 .ellipse-container
 {
@@ -237,8 +250,8 @@ body
 {
   width: 400px;
   height: 400px;
-  background-color: #D4AF37; /* Example color */
   border-radius: 50%; /* Makes it a circle */
+  object-fit: cover; /* Ensures the image covers the circle */
 }
 .right-container
 {
@@ -310,7 +323,7 @@ body
     height: fit-content; /* Height hug */
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
-    /*min-height: 100vh;*/
+    min-height: 100vh;
 }
 
 .AboutTILE
@@ -593,7 +606,31 @@ body
     transform: translateY(0);
   }
 }
-/* ABOUT PAGE ANIMATION */
+
+/* ABOUT PAGE ANIMATION V 1*/
+/* Containers */
+/* .ellipse-container,.right-container 
+{
+  transition: all 1s ease;
+}
+
+/* Initial off-screen positions
+.ellipse-container 
+{
+  transform: translateX(-100px);
+}
+
+.right-container 
+{
+  transform: translateX(100px);
+}
+
+/* When active or in view 
+.ellipse-container.active,.right-container.active 
+{
+  transform: translateX(0);
+} */
+
 /* ABOUT PAGE 2 ANIMATION */
 /* Responsive adjustments */
 @media (max-width: 1152px) 

@@ -231,3 +231,23 @@ body
         align-items: center;
     }
 }
+
+/* VERSION 1.0.0
+const observer = new IntersectionObserver((entries) => 
+    {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    },
+  );
+
+  // Observe both your containers
+  const leftContainer = document.querySelector('.ellipse-container');
+  const rightContainer = document.querySelector('.right-container');
+
+  observer.observe(leftContainer);
+  observer.observe(rightContainer); */

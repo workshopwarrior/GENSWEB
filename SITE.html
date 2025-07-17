@@ -6,6 +6,7 @@
         <title>Figma Auto Layout Implementation</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="SITE.css">
+        <script defer src="SITE.js"></script>
     </head>
     <body>
         <!-- HOMEPAGE SECTION -->
@@ -13,7 +14,7 @@
             <!-- NAVBAR -->
             <nav class="navbar">
                 <div class="logo">
-                    <div>LOGO</div>
+                    <img src="LOGO.png" class="logo-image" alt="Logo">
                 </div>
                 <div class="links">
                     <a href="#home">HOME</a>
@@ -25,13 +26,13 @@
 
             <!-- HERO SECTION -->
             <div class="hero-section">
-                <h1 class="herotitle">EMPOWERING BUSINESS,EDUCATION AND DATA SOLUTIONS</h1>
+                <h1 class="herotitle">EMPOWERING EDUCATION, DATA AND BUSINESS SOLUTIONS</h1>
                 <h2 class="herosubtitle">empower organisations to leverage data, technology, and strategic insights to drive impactful solutions in education and youth development.</h2>
             </div>
 
             <!-- CTA -->
             <div class="cta1">
-                <button class="button button-primary">BOOK AN APPOINTMENT</button>
+                <button onclick="scrollToContact()" class="button button-primary">BOOK AN APPOINTMENT</button>
                 <button class="button button-secondary">LEARN MORE</button>
             </div>
         </section>
@@ -40,7 +41,7 @@
         <section id="about" class="About section">
             <!--ELLIPSECONTAINER-->
             <div class="ellipse-container">
-                <div class="ellipse"></div>
+                <img src="GENPIC.jpg" class="ellipse">
             </div>
             <!--RIGHTCONTAINER-->
             <div class="right-container">
@@ -53,7 +54,7 @@
                 <!-- CTA -->
                 <div class="cta2">
                     <button class="button button-primary">LEARN MORE</button>
-                    <button class="button button-secondary">BOOK AN APPOINTMENT</button>
+                    <button onclick="scrollToContact()" class="button button-secondary">BOOK AN APPOINTMENT</button>
                 </div>
             </div>
         </section>
@@ -152,7 +153,7 @@
             </div>
             <!-- CTA -->
             <div class="cta2">
-                <button class="button button-primary">SCHEDULE A CONSULTATION</button>
+                <button onclick="scrollToContact()" class="button button-primary">SCHEDULE A CONSULTATION</button>
             </div>
         </section>
         <!-- PLACEHOLDER SECTIONS FOR SCROLL WEBSITE -->
@@ -164,38 +165,41 @@
                 </p>
             </div>
             <div class="RIGHTContent">
-                <div class="ContactForm">
+                <form id="contactForm" class="ContactForm">
                     <div class="Names">
                         <div class="LeftSide">
                             <p class="Contact-title">FIRST NAME*</p>
-                            <input type="text" class="ContactInput"> <!-- placeholder="Enter your first name" -->
+                            <input type="text" class="ContactInput" id="firstName" name="firstName" required minlength="2"> <!-- placeholder="Enter your first name" -->
                         </div>
                         <div class="RightSide">
                             <p class="Contact-title">LAST NAME*</p>
-                            <input type="text" class="ContactInput"> <!-- placeholder="Enter your last name" -->
+                            <input type="text" class="ContactInput" id="firstName" name="lastName" required minlength="2"> <!-- placeholder="Enter your last name" -->
                         </div>
                     </div>
                     <div class="Organisation">
                         <p class="Contact-title">ORGANISATION</p>
-                        <input type="text" class="ContactInput"> <!-- placeholder="Enter your organisation name" -->
+                        <input type="text" class="ContactInput" id="organisation" name="organisation"> <!-- placeholder="Enter your organisation name" -->
                     </div>
                     <div class="Email">
                         <p class="Contact-title">EMAIL*</p>
-                        <input type="email" class="ContactInput"> <!-- placeholder="Enter your email address" -->
+                        <input type="email" class="ContactInput" id="email" name="email" required> <!-- placeholder="Enter your email address" -->
                     </div>
                     <div class="Phone">
                         <p class="Contact-title">PHONE*</p>
-                        <input type="tel" class="ContactInput"> <!-- placeholder="Enter your phone number" -->
+                        <input type="tel" class="ContactInput" id="phone" name="phone" required pattern="[0-9+ ]{7,15}"> <!-- placeholder="Enter your phone number" -->
                     </div>
                     <div class="Message">
-                        <p class="Contact-title">MESSAGE*</p>
-                        <textarea class="ContactInput" ></textarea><!-- placeholder="Enter your message" -->
+                        <p class="Contact-title">MESSAGE</p>
+                        <textarea class="ContactInput" id="message" name="message"></textarea><!-- placeholder="Enter your message" -->
                     </div>
+
                     <!-- CTA -->
                     <div class="cta2">
-                        <button class="button button-primary">SUBMIT</button>
+                        <button type="submit" id="submitBtn" class="button button-primary">SUBMIT</button>
                     </div>
-                </div>
+                    <!-- Message for response -->
+                    <p id="response"></p>
+                </form>
             </div>   
         </section>
     </body>
