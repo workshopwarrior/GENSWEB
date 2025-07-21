@@ -33,7 +33,7 @@
             <!-- CTA -->
             <div class="cta1">
                 <button onclick="scrollToContact()" class="button button-primary">BOOK AN APPOINTMENT</button>
-                <button class="button button-secondary">LEARN MORE</button>
+                <button onclick="scrollToAbout()"class="button button-secondary">LEARN MORE</button>
             </div>
         </section>
 
@@ -53,17 +53,17 @@
                 </div>
                 <!-- CTA -->
                 <div class="cta2">
-                    <button class="button button-primary">LEARN MORE</button>
+                    <button onclick="scrollToAbout2()" class="button button-primary">LEARN MORE</button>
                     <button onclick="scrollToContact()" class="button button-secondary">BOOK AN APPOINTMENT</button>
                 </div>
             </div>
         </section>
 
         <!-- ABOUTPAGE2 SECTION -->        
-        <section class="Aboutpage2 section">
+        <section id="about2" class="Aboutpage2 section">
             <!--APPROACH-->
             <div class="AboutTILE">
-                <h1 class="Tiletitle">MY APPROACH</h1>
+                <h1 class="Tiletitle">My Approach</h1>
                 <ul class="Tilelist">
                     <li>Evidence-based strategy design</li>
                     <li>Practical, scalable implementation models</li>
@@ -73,7 +73,7 @@
             </div>
             <!--EXPERTISE-->
             <div class="AboutTILE">
-                <h1 class="Tiletitle">MY EXPERTISE</h1>
+                <h1 class="Tiletitle">My Expertise</h1>
                 <ul class="Tilelist">
                     <li>Complex Project Design & Delivery</li>
                     <li>Business Development & Partnerships</li>
@@ -83,7 +83,7 @@
             </div>
             <!--CLIENTS-->
             <div class="AboutTILE">
-                <h1 class="Tiletitle">MY CLIENTS</h1>
+                <h1 class="Tiletitle">My Clients</h1>
                 <ul class="Tilelist">
                     <li>Governments & Ministries</li>
                     <li>Multilateral Organisations (e.g. FCDO, GIZ, World Bank)</li>
@@ -104,51 +104,51 @@
                     <div class="Frame">
                         <h1 class="ServiceName">BUSINESS DEVELOPMENT & PARTNERSHIPS</h1>
                     </div>
-                    <!-- <ul class="Servicelist">
+                    <ul class="Servicelist">
                         <p class="ServiceInfo">I Build sustainable growth pathways</p>
                         <li>Market research and opportunity assessment</li>
                         <li>Business model development for EdTech and education businesses</li>
                         <li>Public-private partnership design</li>
                         <li>Strategic partnership brokering</li>
-                    </ul> -->
+                    </ul>
                 </div>
                 <div class="ServiceTile">
                     <div class="Frame">
                         <h1 class="ServiceName">DATA ANALYSIS & VISUALISATION</h1>
                     </div>
-                    <!-- <ul class="Servicelist">
+                    <ul class="Servicelist">
                         <p class="ServiceInfo">I Turn data into actionable insights</p>
                         <li>Data governance frameworks</li>
                         <li>Dashboard design and development</li>
                         <li>Monitoring & Evaluation system design</li>
                         <li>Analytics for policy and planning</li>
                         <li>Data utilization training</li>
-                    </ul> -->
+                    </ul>
                 </div>
                 <div class="ServiceTile">
                     <div class="Frame">
                         <h1 class="ServiceName">EDUCATION TECHNOLOGY</h1>
                     </div>
-                    <!-- <ul class="Servicelist">
+                    <ul class="Servicelist">
                         <p class="ServiceInfo">I Transform learning through digital innovation</p>
                         <li>EdTech strategy development</li>
                         <li>Digital learning ecosystem design</li>
                         <li>Capacity-building for educators</li>
                         <li>National system strengthening (EMIS, CPD platforms, etc.)</li>
                         <li>Inclusive education integration</li>
-                    </ul> -->
+                    </ul>
                 </div>
                 <div class="ServiceTile">
                     <div class="Frame">
                         <h1 class="ServiceName">PROJECT MANAGEMENT</h1>
                     </div>
-                    <!-- <ul class="Servicelist">
+                    <ul class="Servicelist">
                         <p class="ServiceInfo">I Deliver complex projects on time and budget</p>
                         <li>Systems mapping & theory of change development</li>
                         <li>Project risk management</li>
                         <li>Stakeholder engagement & facilitation</li>
                         <li>Program design & delivery for multi-donor projects</li>
-                    </ul> -->
+                    </ul>
                 </div>                  
             </div>
             <!-- CTA -->
@@ -156,7 +156,7 @@
                 <button onclick="scrollToContact()" class="button button-primary">SCHEDULE A CONSULTATION</button>
             </div>
         </section>
-        <!-- PLACEHOLDER SECTIONS FOR SCROLL WEBSITE -->
+        <!--CONTACT SECTION -->
         <section id="contact" class="Contact section">
             <div class="LEFTContent">
                 <h1 class="C_T">CONTACT</h1>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="RightSide">
                             <p class="Contact-title">LAST NAME*</p>
-                            <input type="text" class="ContactInput" id="firstName" name="lastName" required minlength="2"> <!-- placeholder="Enter your last name" -->
+                            <input type="text" class="ContactInput" id="lastName" name="lastName" required minlength="2"> <!-- placeholder="Enter your last name" -->
                         </div>
                     </div>
                     <div class="Organisation">
@@ -197,7 +197,6 @@
                     <div class="cta2">
                         <button type="submit" id="submitBtn" class="button button-primary">SUBMIT</button>
                     </div>
-                    <!-- Message for response -->
                     <p id="response"></p>
                 </form>
             </div>   

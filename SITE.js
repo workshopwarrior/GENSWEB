@@ -1,105 +1,139 @@
 /* BUTTON FUNCTIONALITY */
-function scrollToContact() 
-{
+function scrollToContact() {
     document.getElementById('contact').scrollIntoView({
-       /*  behavior: 'smooth' */
+        behavior: 'smooth'
     });
 }
-/*FORM FUNCTIONALITY */
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const responseMsg = document.getElementById('response');
+function scrollToAbout() {
+    document.getElementById('about').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+function scrollToAbout2() {
+    document.getElementById('about2').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+/* FORM FUNCTIONALITY */
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const responseMsg = document.getElementById('response');
 
-    // Disable the submit button to prevent multiple clicks
-    submitBtn.disabled = true;
-    responseMsg.textContent = "Sending...";
+    if (form && submitBtn && responseMsg) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-    // Extra check: simple client-side validation
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
+            // Disable the submit button to prevent multiple clicks
+            submitBtn.disabled = true;
+            submitBtn.textContent = "SENDING...";
+            responseMsg.textContent = "";
+            responseMsg.style.color = "#666";
 
-    if (firstName.length < 2 || lastName.length < 2 || email === "" || phone === "") {
-      responseMsg.textContent = "Please fill in all required fields correctly.";
-      submitBtn.disabled = false;
-      return;
+            // Get form values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const organisation = document.getElementById('organisation').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Client-side validation
+            if (firstName.length < 2) {
+                showError("First name must be at least 2 characters long.");
+                return;
+            }
+
+            if (lastName.length < 2) {
+                showError("Last name must be at least 2 characters long.");
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showError("Please enter a valid email address.");
+                return;
+            }
+
+            if (phone.length < 7) {
+                showError("Please enter a valid phone number.");
+                return;
+            }
+
+            // Prepare form data
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('contact.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccess(result.message || "Thank you! Your message has been sent successfully.");
+                    form.reset();
+                } else {
+                    showError(result.error || "Something went wrong. Please try again.");
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError("Network error. Please check your connection and try again.");
+            } finally {
+                // Re-enable the submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = "SUBMIT";
+            }
+        });
     }
 
-    // Prepare form data
-    const formData = new FormData(form);
-
-    try {
-      const res = await fetch('contact.php', {
-        method: 'POST',
-        body: formData
-      });
-
-      const result = await res.json();
-      if (result.success) {
-        responseMsg.textContent = "✅ Thank you! Your message has been sent.";
-        form.reset();
-      } else {
-        responseMsg.textContent = "❌ Sorry! " + (result.error || "Something went wrong.");
-      }
-    } catch (err) {
-      responseMsg.textContent = "❌ Server error. Please try again later.";
+    // Helper functions
+    function showError(message) {
+        responseMsg.textContent = "❌ " + message;
+        responseMsg.style.color = "#e74c3c";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "SUBMIT";
     }
 
-    submitBtn.disabled = false;
-  });
+    function showSuccess(message) {
+        responseMsg.textContent = "✅ " + message;
+        responseMsg.style.color = "#27ae60";
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+});
 
 /* ABOUT PAGE ANIMATIONS */
-/* SCROLL */
-window.addEventListener('scroll', () => 
-{
+function animateAboutSection() {
     const section = document.querySelector('#about');
     const left = document.querySelector('.ellipse-container');
     const right = document.querySelector('.right-container');
 
-    const sectionRect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+    if (section && left && right) {
+        const sectionRect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-    // How far is section into view? 0 = bottom, 1 = fully in view
-    const progress = Math.min(Math.max(1 - sectionRect.top / windowHeight, 0), 1);
+        // Calculate how far the section is in view
+        const progress = Math.min(Math.max(1 - sectionRect.top / windowHeight, 0), 1);
 
-    // Apply transforms based on progress
-    left.style.opacity = progress;
-    right.style.opacity = progress;
+        // Fade + slide based on scroll progress
+        left.style.opacity = progress;
+        right.style.opacity = progress;
 
-    left.style.transform = `translateX(${(-100 + progress * 100)}px)`;
-    right.style.transform = `translateX(${(100 - progress * 100)}px)`;
-});
-function animateAboutSection() {
-  const section = document.querySelector('#about');
-  const left = document.querySelector('.ellipse-container');
-  const right = document.querySelector('.right-container');
-
-  const sectionRect = section.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-
-  // Calculate how far the section is in view
-  const progress = Math.min(Math.max(1 - sectionRect.top / windowHeight, 0), 1);
-
-  // Fade + slide based on scroll progress
-  left.style.opacity = progress;
-  right.style.opacity = progress;
-
-  left.style.transform = `translateX(${(-100 + progress * 100)}px)`;
-  right.style.transform = `translateX(${(100 - progress * 100)}px)`;
+        left.style.transform = `translateX(${(-100 + progress * 100)}px)`;
+        right.style.transform = `translateX(${(100 - progress * 100)}px)`;
+    }
 }
 
-// Run on scroll
+// Run animations on various events
 window.addEventListener('scroll', animateAboutSection);
-
-// Also run when user clicks an anchor that jumps to #about
 window.addEventListener('hashchange', animateAboutSection);
-
-// Also run on page load (in case user reloads while at #about)
 window.addEventListener('DOMContentLoaded', animateAboutSection);
-
-

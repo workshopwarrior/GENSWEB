@@ -9,7 +9,7 @@ body
 {
     font-family: 'Inter', sans-serif;
     color: #FFFFFF;
-    background: linear-gradient(-45deg, #003366, #004080);
+    background: linear-gradient(-45deg, #003366, #003366);
     background-size: 400% 400%;
     animation: gradientShift 3s ease infinite;
 }
@@ -40,10 +40,9 @@ html
     display: flex;
     flex-direction: column;     /* Vertical flow */
     padding: 0 64px;            /* Horizontal padding */
-    gap: 8px;
+    gap: 0px;
     width: 100%;
     height: fit-content; /* Height hug */
-    min-height: 100vh; /* Make sure it's visible */
 }
 
 /* NAVBAR AUTO LAYOUT */
@@ -146,7 +145,7 @@ html
     /* Figma: Width fill, height hug, font size 80px, Playfair Display regular, line height 96px */
     width: 100%;
     height: fit-content;
-    font-size: 80px;
+    font-size: 72px;
     font-family: 'Playfair Display', serif;
     font-weight: 400;
     line-height: 96px;
@@ -233,8 +232,7 @@ html
     gap: 64px;
     width: 100%;
     height: fit-content; /* Height hug */
-    min-height: 100vh;/*Make sure it's visible*/
-    overflow: hidden;
+    overflow: hidden;;
 }
 .ellipse-container
 {
@@ -320,7 +318,7 @@ html
     min-width: 256px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 24px #FFFFFF;  /* solid black shadow, no transparency */
-    height: fit-content; /* Height hug */
+    height:fit-content; /* Height hug */
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     min-height: 100vh;
@@ -403,6 +401,14 @@ html
     gap: 16px;
     padding: 0px;
 }
+.Servicelist
+{
+    font-size: 16px;
+    font-family: 'Inter', serif;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
 .Frame
 {
     display: flex;
@@ -425,6 +431,7 @@ html
     text-align: left;
     color: #FFFFFF;   
 }
+
 
 .Contact
 {
@@ -605,6 +612,60 @@ html
     opacity: 1;
     transform: translateY(0);
   }
+}
+/*SERVICES SECTION ANIMATION V1*/
+/* /* Hide the service list by default
+.Servicelist {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show the service list when hovering over the ServiceTile
+.ServiceTile:hover .Servicelist {
+    display: block;
+    opacity: 1;
+}
+
+/* Optional: Add smooth transitions for better UX
+.ServiceTile 
+{
+    transition: all 0.3s ease-in-out;
+} */
+/* SERVICES SECTION ANIMATION V2 */
+/* Ultra-smooth approach using transform and opacity */
+.Servicelist {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.ServiceTile:hover .Servicelist {
+    max-height: 500px; /* Adjust based on your content */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Add hover delay to prevent flickering */
+.ServiceTile {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Smooth individual list items animation */
+.Servicelist li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease-in-out;
+    list-style-type: disc; /* Ensure bullets show */
+}
+
+.ServiceTile:hover .Servicelist li {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* ABOUT PAGE ANIMATION V 1*/
